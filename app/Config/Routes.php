@@ -31,8 +31,26 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Invoice::/template/layout');
-
+//Dashboard
+$routes->get('/', 'Dashboard::index');
+$routes->get('/login', 'User::login');
+//
+//Table Perjalanan
+$routes->get('/table_perjalanan', 'Catatan::index2');
+$routes->get('/tambah_catatan', 'Catatan::tambah_catatan');
+$routes->put('/edit_catatan', 'Catatan::update');
+$routes->get('/edit_catatan/(:any)/edit', 'Catatan::edit_catatan/$1');
+$routes->get('/table_perjalanan/(:any)/delete', 'Catatan::destroy/$1');
+// User
+$routes->get('/tambah_user', 'User::tambah_user');
+$routes->get('/edit_user', 'User::edit_user');
+$routes->post('/cek_login', 'User::cek_login');
+$routes->get('/logout', 'User::logout');
+//Add On
+$routes->get('/news', 'Dashboard::news');
+$routes->get('/about', 'Dashboard::about');
+$routes->get('/profile', 'Dashboard::profile');
+//
 /*
  * --------------------------------------------------------------------
  * Additional Routing
