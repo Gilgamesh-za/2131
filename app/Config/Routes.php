@@ -36,20 +36,33 @@ $routes->get('/', 'Dashboard::index');
 $routes->get('/login', 'User::login');
 //
 //Table Perjalanan
-$routes->get('/table_perjalanan', 'Catatan::index2');
-$routes->get('/tambah_catatan', 'Catatan::tambah_catatan');
-$routes->put('/edit_catatan', 'Catatan::update');
-$routes->get('/edit_catatan/(:any)/edit', 'Catatan::edit_catatan/$1');
-$routes->get('/table_perjalanan/(:any)/delete', 'Catatan::destroy/$1');
+$routes->get('/table_perjalanan', 'Catatan::index2', ['filter' => 'auth']);
+$routes->get('/tambah_catatan', 'Catatan::tambah_catatan', ['filter' => 'auth']);
+$routes->get('/scan_catatan', 'Catatan::scan_catatan', ['filter' => 'auth']);
+$routes->put('/edit_catatan', 'Catatan::update', ['filter' => 'auth']);
+$routes->get('/edit_catatan/(:any)/edit', 'Catatan::edit_catatan/$1', ['filter' => 'auth']);
+$routes->get('/table_perjalanan/(:any)/delete', 'Catatan::destroy/$1', ['filter' => 'auth']);
 // User
+$routes->get('/admin', 'User::admin');
 $routes->get('/tambah_user', 'User::tambah_user');
-$routes->get('/edit_user', 'User::edit_user');
+$routes->get('/detail_user/(:any)/detail', 'User::detail_user/$1', ['filter' => 'auth']);
+$routes->get('/admin/(:any)/delete', 'User::destroy/$1', ['filter' => 'auth']);
+$routes->get('/profile', 'User::profile', ['filter' => 'auth']);
+$routes->put('/update_profile', 'User::update_profile', ['filter' => 'auth']);
+$routes->put('/edit_profile/(:any)', 'User::edit_profile/$1', ['filter' => 'auth']);
 $routes->post('/cek_login', 'User::cek_login');
 $routes->get('/logout', 'User::logout');
+// News
+$routes->get('/news', 'News::news');
+$routes->get('/tambah_berita', 'News::tambah_berita', ['filter' => 'auth']);
+$routes->get('/blog/(:any)', 'News::blog/$1', ['filter' => 'auth']);
+$routes->get('/edit_berita/(:any)', 'News::edit_berita/$1', ['filter' => 'auth']);
+$routes->put('/edit_berita', 'News::update', ['filter' => 'auth']);
+$routes->get('/news_delete/(:any)/delete', 'News::destroy/$1', ['filter' => 'auth']);
 //Add On
-$routes->get('/news', 'Dashboard::news');
 $routes->get('/about', 'Dashboard::about');
-$routes->get('/profile', 'Dashboard::profile');
+$routes->get('/print', 'PdfController::generate');
+
 //
 /*
  * --------------------------------------------------------------------

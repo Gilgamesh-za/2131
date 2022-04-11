@@ -1,6 +1,5 @@
 <?= $this->extend('template/index') ?>
 <?= $this->section('content') ?>
-
 <!-- ======= Profile Section ======= -->
 <section id="profile" class="features">
 
@@ -11,86 +10,86 @@
             <p>Kostumisasi profile anda sendiri</p>
         </header>
         <!-- Feature Tabs -->
-        <div class="row feture-tabs" data-aos="fade-up">
-            <div class="col-lg-6">
-                <!-- Tabs -->
-                <ul class="nav nav-pills mb-3">
-                    <li>
-                        <a class="nav-link active" data-bs-toggle="pill" href="#tab1">About Me</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" data-bs-toggle="pill" href="#tab2">Voluptates</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" data-bs-toggle="pill" href="#tab3">Corrupti</a>
-                    </li>
-                </ul>
-                <!-- End Tabs -->
+        
+			<!-- Page title -->
+			<div class="my-5">
+				<h3>My Profile</h3>
+				<hr>
+			</div>
+			<!-- Form START -->
+            <form action="/update_profile" method="post" class="file-upload">
+            <?= csrf_field(); ?>
+            <input type="hidden" name="_method" value="put">
+            <?php foreach($user as $row): ?>
+				<input type="hidden" name="id_user" value="<?= $row['id_user'];?>">
+				<div class="row mb-5 gx-5">
+					<!-- Contact detail -->
+					<div class="col-xxl mb-5 mb-xxl-0">
+						<div class="bg-secondary-soft px-4 py-5 rounded">
+							<div class="row g-3">
+								<div class="col-md-6">
+									<label class="form-label">NIK *</label>
+									<input type="text" name="nik" class="form-control" value="<?= $row['nik'];?>">
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Nama *</label>
+									<input type="text" class="form-control" name="nama" value="<?= $row['nama'];?>">
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Alamat *</label>
+									<input type="text" class="form-control" name="alamat" value="<?= $row['alamat'];?>">
+								</div>
+								<div class="col-md-6">
+									<label class="form-label">Gender *</label>
+									<input type="text" class="form-control" name="gender" value="<?= $row['gender'];?>">
+								</div>
+								<div class="col-md-6">
+									<label for="inputEmail4" class="form-label">HP *</label>
+									<input type="number" class="form-control" name="hp" value="<?= $row['hp'];?>">
+								</div>
+				
+							</div> 
+                            <!-- Row END -->
+						</div>
+					</div>
+				</div> 
 
-                <!-- Tab Content -->
-                <!-- Tab 1 -->
-                <div class="tab-content">
-
-                    <div class="tab-pane fade show active" id="tab1">
-
-                        <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-check2"></i>
-                            <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-                        </div>
-
-                        <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-check2"></i>
-                            <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                        </div>
-
-                        <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-                    </div><!-- End Tab 1 Content -->
-
-                    <div class="tab-pane fade show" id="tab2">
-
-                        <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-check2"></i>
-                            <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-                        </div>
-                        <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-check2"></i>
-                            <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                        </div>
-                        <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-                    </div><!-- End Tab 2 Content -->
-
-                    <div class="tab-pane fade show" id="tab3">
-                        <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-check2"></i>
-                            <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-                        </div>
-                        <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-check2"></i>
-                            <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                        </div>
-                        <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-                    </div><!-- End Tab 3 Content -->
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-6">
-                <img src="assets/img/features-2.png" class="img-fluid" alt="">
-            </div>
-
-        </div>
+					<!-- change password -->
+					<div class="col-xxl mb-10">
+						<div class="bg-secondary-soft px-4 py-5 rounded">
+							<div class="row g-1">
+								<h4 class="my-4">Change Password</h4>
+								<!-- Old password -->
+								<div class="col-md-6">
+									<label for="exampleInputPassword1" class="form-label">Old password *</label>
+									<input type="password" class="form-control" id="exampleInputPassword1" name="password" value="<?= $row['password'];?>">
+								</div>
+								<!-- New password -->
+								<div class="col-md-6">
+									<label for="exampleInputPassword2" class="form-label">New password *</label>
+									<input type="password" class="form-control" id="exampleInputPassword2">
+								</div>
+								<!-- Confirm password -->
+								<div class="col-md-12">
+									<label for="exampleInputPassword3" class="form-label">Confirm Password *</label>
+									<input type="password" class="form-control" id="exampleInputPassword3">
+								</div>
+							</div>
+						</div>
+					</div>
+                    <?php endforeach; ?>
+					<div class="justify-content-md-end text-center mt-3">
+					<button type="submit" class="btn btn-outline-primary">Update profile</button>
+				</div>
+            </form>
+				</div> 
+                <!-- Row END -->
+				<!-- button -->
+				
+			</form> <!-- Form END -->
+		</div>
+	</div>
+	</div>
         <!-- End Feature Tabs -->
     </div>
 </section>

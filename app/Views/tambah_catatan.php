@@ -11,8 +11,6 @@
 </div>
 <div class="card-body">
   
-
-            
                     <!-- FORM START -->
                     <form action="/Catatan/save" method="POST">
                         <div class="row mb-3">
@@ -44,14 +42,13 @@
 
                         <div class="row mb-3">
                             <div class="col-md-2 col-12">
-                                <label for="ket" class="form-label">Keterangan</label>
+                                <label for="ket" class="form-label">Catatan</label>
                             </div>
                             <div class="col-md-10 col-12">
                                 <input type="text" class="form-control" id="ket" name="ket">
                             </div>
                         </div>
-
-                        <button type="submit" class="d-block ms-auto btn btn-primary mt-4">Submit</button>
+                        <button type="submit" class="d-block ms-auto btn btn-outline-primary mt-4">Submit</button>
                     </form>
                     <!--FORM END-->
                 </div>
@@ -60,17 +57,28 @@
         </div>
         <!--CARD END-->
     </div>
-    <br>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // DROPDOWN
-        $(document).ready(function () {
-            $("#btn-adduser").click(function () {
-                $("#content-adduser").toggleClass("d-none");
-                $("#btn-adduser > i").toggleClass("bi-caret-down-fill bi-caret-up-fill")
-            });
-        });
-    </script>
+    <!-- Modal -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+      
+            <div class="modal-body">
+              
+            </div>
+      
+            <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+    
 <?=$this->endSection(); ?>

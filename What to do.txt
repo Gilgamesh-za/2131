@@ -1,0 +1,6 @@
+1.Bagian Scan untuk tanggal dan waktu di setting auto sesuai dengan device
+2.Bagian News kurang edit_berita
+3.Bagian Print harusnya untuk user hanya bisa print datanya sendiri,sedangkan admin bisa print semua user
+4.Poster untuk cd
+5.Session destroy ketika close browser
+6.Reset Password

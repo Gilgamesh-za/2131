@@ -14,66 +14,84 @@ class Catatan extends BaseController
         //load model User
         $this->CatatanModel = new \App\Models\CatatanModel();
     }
-    
-    public function index2() 
+
+    public function index2()
     {
-        $data['judul']='CRUD Perjalanan';
+        $data['judul'] = 'CRUD Perjalanan';
         // $data['tb_perjalanan']=$this->CatatanModel->findAll();
         //tampilkan data perjalanan hanya user yang login
-        $id_user = session()->nik;
+        $id_user = session()->get('id');
         // $data['tb_perjalanan']=$this->CatatanModel->where('id_user', $id_user)->findAll();
-        $data['tb_perjalanan']=$this->CatatanModel->view_perjalanan($id_user);
-        return view('table_perjalanan',$data);
+        $data['tb_perjalanan'] = $this->CatatanModel->view_perjalanan($id_user);
+        return view('table_perjalanan', $data);
     }
 
-    public function tambah_catatan()    
+    public function tambah_catatan()
     {
         $data['judul'] = 'Tambah Catatan';
         return view('tambah_catatan');
     }
-    public function save() 
+
+    public function scan_catatan()
     {
-        $data=[
+        $data['judul'] = 'Tambah Catatan';
+        return view('scan_catatan');
+    }
+
+    public function save()
+    {
+        $data = [
             'lokasi' => $this->request->getPost('lokasi'),
             'tanggal' => $this->request->getPost('tanggal'),
             'waktu' => $this->request->getPost('waktu'),
             'ket' => $this->request->getPost('ket'),
-            'id_user' => session()->nik
+            'id_user' => session()->get('id')
         ];
         $this->CatatanModel->save($data);
         return redirect()->to('/table_perjalanan');
     }
+
+    public function scan_save()
+    {
+        $data = [
+            'lokasi' => $this->request->getPost('lokasi'),
+            'ket' => $this->request->getPost('ket'),
+            'id_user' => session()->get('id')
+        ];
+        $this->CatatanModel->save($data);
+        return redirect()->to('/table_perjalanan');
+    }
+
     public function edit_catatan($id)
     {
-        $data['judul']='edit Catatan';     
+        $data['judul'] = 'edit Catatan';
 
         // gunakan fungsi Where()->findAll() 
- 		$data['catatan']=$this->CatatanModel->where('id_perjalanan', $id)->findAll();;   
-        
-        return view('edit_catatan',$data);
+        $data['catatan'] = $this->CatatanModel->where('id_perjalanan', $id)->findAll();;
+
+        return view('edit_catatan', $data);
     }
-    public function update() 
+    public function update()
     {
-        $data=[
+        $data = [
             'lokasi' => $this->request->getPost('lokasi'),
             'tanggal' => $this->request->getPost('tanggal'),
             'waktu' => $this->request->getPost('waktu'),
             'ket' => $this->request->getPost('ket')
         ];
-        $this->CatatanModel->update(['id_perjalanan' => $this->request->getPost('id_perjalanan')],$data);
+        $this->CatatanModel->update(['id_perjalanan' => $this->request->getPost('id_perjalanan')], $data);
         return redirect()->to('/table_perjalanan');
-    }
-    public function destroy($id) 
-    {
-    
-        // hapus data berdasarkan id
-    
-        $this->CatatanModel->delete(['id_perjalanan' => $id]);
-    
-        //kembali ke table employe
-    
-        return redirect()->to('/table_perjalanan');
-        
     }
 
+    public function destroy($id)
+    {
+
+        // hapus data berdasarkan id
+
+        $this->CatatanModel->delete(['id_perjalanan' => $id]);
+
+        //kembali ke table employe
+
+        return redirect()->to('/table_perjalanan');
+    }
 }

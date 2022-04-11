@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Mar 2022 pada 06.13
+-- Waktu pembuatan: 01 Apr 2022 pada 03.07
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `aplikasi_perjalanan`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_blog`
+--
+
+CREATE TABLE `tb_blog` (
+  `id_blog` int(10) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `judul` varchar(50) NOT NULL,
+  `isi` text NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -43,11 +58,10 @@ CREATE TABLE `tb_perjalanan` (
 --
 
 INSERT INTO `tb_perjalanan` (`id_perjalanan`, `id_user`, `lokasi`, `tanggal`, `waktu`, `ket`, `created_at`, `updated_at`) VALUES
-(7, '12345678', 'Gogorante', '2022-03-01', '11:50:00.000000', 'Sehat', '0000-00-00 00:00:00', '2022-03-01 21:45:10'),
-(8, '12345678', 'gogorante', '2022-03-01', '11:37:00.000000', 'Sehat', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, '123456789', 'Gogorante', '2022-03-02', '09:22:00.000000', 'Sehat', '2022-03-01 20:22:52', '2022-03-01 20:22:52'),
-(10, '123456789', 'Gogorante', '2022-03-02', '09:32:00.000000', 'Sakit', '2022-03-01 20:31:18', '2022-03-01 20:31:18'),
-(12, '12345678', 'malang', '2022-03-10', '12:00:00.000000', 'kerja', '2022-03-09 22:47:02', '2022-03-09 22:47:02');
+(16, '6', 'Gogorante', '2022-03-25', '09:52:00.000000', 'Sehat', '2022-03-24 21:48:46', '2022-03-24 21:48:46'),
+(17, '6', 'Doko', '2022-03-12', '09:53:00.000000', 'Sakit', '2022-03-24 21:49:01', '2022-03-24 21:49:01'),
+(18, '9', 'Gogorante', '2022-03-25', '13:11:00.000000', 'Sehat', '2022-03-24 22:06:09', '2022-03-24 22:06:09'),
+(19, '9', 'Doko', '2022-03-31', '08:41:00.000000', 'Sehat', '2022-03-30 20:39:49', '2022-03-30 20:39:49');
 
 -- --------------------------------------------------------
 
@@ -61,7 +75,8 @@ CREATE TABLE `tb_user` (
   `password` varchar(100) NOT NULL,
   `nama` varchar(30) NOT NULL,
   `alamat` text NOT NULL,
-  `gender` enum('L','P') NOT NULL,
+  `gender` enum('Laki-laki','Perempuan') NOT NULL,
+  `akses` enum('admin','user') NOT NULL,
   `hp` varchar(20) NOT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
@@ -71,13 +86,18 @@ CREATE TABLE `tb_user` (
 -- Dumping data untuk tabel `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_user`, `nik`, `password`, `nama`, `alamat`, `gender`, `hp`, `created_at`, `updated_at`) VALUES
-(6, '12345678', '$2y$10$wucNzgQRF17HU3CnEnj6JunSowiPP2faEH7Vnr6ncm57DpF9WL2ra', 'Jager', 'Gogorante', 'L', '0812931237', 0, 0),
-(7, '123456789', '$2y$10$xYot0OLSWGlcyYgl3Zl3QeGDfQVJ9RYW9updcENazyFOylsOeokG2', 'Aryo', 'Gogorante', 'L', '123456', 0, 0);
+INSERT INTO `tb_user` (`id_user`, `nik`, `password`, `nama`, `alamat`, `gender`, `akses`, `hp`, `created_at`, `updated_at`) VALUES
+(13, '3576447103910003', '$2y$10$2CbN/GmhM/c0uD2yaYamYui4/7O/dgLN7kfMCP5RvaIv/t0Gq2KRS', 'Aryo', 'Gogorante', 'Laki-laki', 'admin', '08199771156', 0, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `tb_blog`
+--
+ALTER TABLE `tb_blog`
+  ADD PRIMARY KEY (`id_blog`);
 
 --
 -- Indeks untuk tabel `tb_perjalanan`
@@ -96,16 +116,22 @@ ALTER TABLE `tb_user`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_blog`
+--
+ALTER TABLE `tb_blog`
+  MODIFY `id_blog` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_perjalanan`
 --
 ALTER TABLE `tb_perjalanan`
-  MODIFY `id_perjalanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_perjalanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

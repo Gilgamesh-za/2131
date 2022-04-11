@@ -1,26 +1,5 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="<?= base_url('login/fonts/icomoon/style.css'); ?>">
-
-    <link rel="stylesheet" href="<?= base_url('login/css/owl.carousel.min.css'); ?>">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?= base_url('login/css/bootstrap.min.css'); ?>">
-    
-    <!-- Style -->
-    <link rel="stylesheet" href="<?= base_url('login/css/style.css'); ?>">
-
-    <title>Login</title>
-  </head>
-  <body>
-  
-  
+<?= $this->extend('template/index2') ?>
+<?= $this->section('content') ?>
   <div class="content">
     <div class="container">
     <?php if (!empty(session()->getFlashdata('error'))) { ?>
@@ -36,11 +15,11 @@
           <div class="row justify-content-center">
             <div class="col-md-8">
               <div class="mb-4">
-              <h3>Sign In</h3>
+              <h3 style="color:#012970">Sign In</h3>
             </div>
             <form action="/cek_login" method="post">
               <div class="form-group first">
-                <input type="text" class="form-control" id="username" name="nik" placeholder="NIK">
+                <input type="number" class="form-control" id="username" name="nik" placeholder="NIK">
 
               </div>
     <br>
@@ -49,9 +28,8 @@
                 
               </div>
             
-                <button type="submit" class="btn btn-block btn-primary " style="text-align : center;"><h5>Log In</h5></button> 
-                <a href="/edit_user"<button type="submit" class="btn btn-block btn-primary " style="text-align : center; text-decoration: none; color: aliceblue;"><h5>Forgot Password</h5></button></a>
-                <a href="/tambah_user"<button type="submit" class="btn btn-block btn-primary " style="text-align : center; text-decoration: none; color: aliceblue;"><h5>Haven't Register yet</h5></button></a>
+                <button type="submit" class="btn  btn-outline btn-primary" style="text-align : center; width: 100%"><h5>Log In</h5></button> 
+                <a href="<?= base_url('/tambah_user'); ?>"<button type="submit" class="btn  btn-outline btn-primary " style="text-align : center; text-decoration: none; color: aliceblue; width: 100%; margin-top: 5%"><h5>Haven't Register yet</h5></button></a>
                 <br>
             </div>             
             </form> 
@@ -60,12 +38,8 @@
         </div>
       </div>
     </div>
+    
   </div>
-
+  <?= $this->endSection(); ?>
   
-    <script src="<?= base_url('login/js/jquery-3.3.1.min.js'); ?>"></script>
-    <script src="<?= base_url('login/js/popper.min.js'); ?>"></script>
-    <script src="<?= base_url('login/js/bootstrap.min.js'); ?>"></script>
-    <script src="<?= base_url('login/js/main.js'); ?>"></script>
-  </body>
-</html>
+   

@@ -12,23 +12,10 @@ class Dashboard extends BaseController
         return view('home');
     }
 
-    public function news()
-    {
-        $data['judul'] = 'catatan';
-
-        return view('news');
-    }
-
     public function about()
     {
         $data['judul'] = 'about';
 
         return view('about');
-    }
-    public function profile()
-    {
-        $data['judul'] = 'profile';
-
-        return view('profile');
     }
 }
